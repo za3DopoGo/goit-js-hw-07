@@ -28,17 +28,22 @@ const images = [
   },
 ];
 
-let galleryList = document.querySelector('.gallery');
+const galleryList = document.querySelector('.gallery');
+
 function createGallery(imagesArray) {
-  let galleryItems = imagesArray.map(image => {
-    let listItem = document.createElement('li');
+  const galleryItems = [];
+  
+  imagesArray.forEach(image => {
+    const listItem = document.createElement('li');
     listItem.classList.add('gallery-item');
-    let imageElement = document.createElement('img');
+    const imageElement = document.createElement('img');
     imageElement.src = image.url;
     imageElement.alt = image.alt;
     listItem.appendChild(imageElement);
-    return listItem;
+    galleryItems.push(listItem);
   });
+  
   galleryList.append(...galleryItems);
 }
+
 createGallery(images);
